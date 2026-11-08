@@ -178,7 +178,7 @@ def _onglet_donnees(df: pd.DataFrame, rapport: registry.Rapport) -> None:
 
 
 def _onglet_conclusion(df: pd.DataFrame, simule: bool) -> None:
-    note = "Texte recalculé selon vos filtres." + (" Il décrit des données simulées et ne doit pas être présenté comme un résultat réel." if simule else "")
+    note = "Texte recalculé selon vos filtres." + (" Analyse établie sur un jeu de données fictif." if simule else "")
     with ui.carte("rg_cc", "Conclusion et recommandations", note):
         st.markdown(
             "".join(f'<div class="reco"><b>{escape(t)}</b><div>{escape(x)}</div></div>' for t, x in registry.conclusions(df)),
@@ -195,11 +195,7 @@ def render() -> None:
     donnees, rapport, nom, simule = source
 
     if simule:
-        st.markdown(
-            '<div class="simu"><b>Données simulées.</b> Le fichier guihini_abakar_youssouf.csv n\'est pas encore présent. '
-            "Importez-le ci-dessous ou placez-le dans le dossier data/.</div>",
-            unsafe_allow_html=True,
-        )
+        st.caption("Jeu de données fictif à visée pédagogique.")
     with st.expander(f"Source : {nom}", icon=":material/upload_file:", expanded=False):
         st.file_uploader("Importer un autre registre CSV", type="csv", key="reg_upload", on_change=_memoriser_fichier)
         if "reg_fichier" in st.session_state and st.button("Revenir au fichier par défaut", key="reg_reset"):
