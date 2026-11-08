@@ -1,0 +1,31 @@
+[server]
+enableStaticServing = true
+maxUploadSize = 25
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = "type"
+
+[theme]
+base = "light"
+primaryColor = "#0B1F3A"
+backgroundColor = "#f8f9ff"
+secondaryBackgroundColor = "#eef1fb"
+textColor = "#0B1F3A"
+borderColor = "#E2E7F3"
+font = "Inter"
+headingFont = "Space Grotesk"
+baseRadius = "10px"
+
+[[theme.fontFaces]]
+family = "Inter"
+url = "app/static/fonts/inter.woff2"
+weight = "100 900"
+
+[[theme.fontFaces]]
+family = "Space Grotesk"
+url = "app/static/fonts/space-grotesk.woff2"
+weight = "300 700"
